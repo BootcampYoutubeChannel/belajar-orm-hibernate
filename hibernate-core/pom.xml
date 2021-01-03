@@ -13,6 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <hibernate.version>5.4.22.Final</hibernate.version>
+        <postgresql.version>42.2.12.jre7</postgresql.version>
     </properties>
 
     <dependencies>
@@ -45,7 +46,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.12.jre7</version>
+            <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
         <!-- database pooling connection -->
@@ -97,7 +98,7 @@
                     <dependency>
                         <groupId>org.postgresql</groupId>
                         <artifactId>postgresql</artifactId>
-                        <version>42.2.12.jre7</version>
+                        <version>${postgresql.version}</version>
                         <scope>runtime</scope>
                     </dependency>
                 </dependencies>
