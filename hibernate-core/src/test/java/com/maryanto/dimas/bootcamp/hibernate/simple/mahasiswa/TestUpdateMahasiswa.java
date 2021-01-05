@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @Ignore
-public class TestAddNewMahasiswa extends TestCase {
+public class TestUpdateMahasiswa extends TestCase {
 
     private Session session;
     private MahasiswaDao dao;
@@ -32,16 +32,16 @@ public class TestAddNewMahasiswa extends TestCase {
         Mahasiswa mahasiswa = Mahasiswa.builder()
                 .kode(2L)
                 .nim("10511150")
-                .nama("Dimas Maryanto")
+                .nama("Dimas Maryanto (Updated)")
                 .active(true)
                 .createdBy("admin")
                 .createdDate(LocalDateTime.now())
-                .tglLahir(LocalDate.of(1990, 1, 1))
+                .tglLahir(LocalDate.of(1993, 1, 1))
                 .thnMasuk(2011).build();
 
         this.session.beginTransaction();
 //        save data and then return auto generated id
-        mahasiswa = this.dao.save(mahasiswa);
+        mahasiswa = this.dao.update(mahasiswa);
 
 //        commit
         this.session.getTransaction().commit();
