@@ -1,6 +1,7 @@
 package com.maryanto.dimas.bootcamp.hibernate.config;
 
 import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.ClassRoomWithUniquesConstraint;
+import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.EmployeeWithCheckConstraint;
 import com.maryanto.dimas.bootcamp.hibernate.simple.entity.master.Mahasiswa;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
@@ -22,7 +23,8 @@ public class HibernateConfiguration {
         try {
             MetadataSources metadataSources = new MetadataSources(registry);
             metadataSources.addAnnotatedClass(Mahasiswa.class)
-                    .addAnnotatedClass(ClassRoomWithUniquesConstraint.class);
+                    .addAnnotatedClass(ClassRoomWithUniquesConstraint.class)
+                    .addAnnotatedClass(EmployeeWithCheckConstraint.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
