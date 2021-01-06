@@ -17,10 +17,6 @@ public class ClassRoomEmbedded {
 
     @EmbeddedId
     private ClassRoomEmbeddable id;
-    //    @Id
-//    private String id1;
-//    @Id
-//    private String id2;
     @Column(name = "kelas_name")
     private String name;
     @Column(name = "prodi")
