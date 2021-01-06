@@ -3,6 +3,7 @@ package com.maryanto.dimas.bootcamp.hibernate.config;
 import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.ClassRoomWithUniquesConstraint;
 import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.EmployeeWithCheckConstraint;
 import com.maryanto.dimas.bootcamp.hibernate.generator.entity.ClassRoomWithSequenceGenerator;
+import com.maryanto.dimas.bootcamp.hibernate.generator.entity.ClassRoomWithUuidGenerator;
 import com.maryanto.dimas.bootcamp.hibernate.simple.entity.master.Mahasiswa;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
@@ -26,7 +27,8 @@ public class HibernateConfiguration {
             metadataSources.addAnnotatedClass(Mahasiswa.class)
                     .addAnnotatedClass(ClassRoomWithUniquesConstraint.class)
                     .addAnnotatedClass(EmployeeWithCheckConstraint.class)
-                    .addAnnotatedClass(ClassRoomWithSequenceGenerator.class);
+                    .addAnnotatedClass(ClassRoomWithSequenceGenerator.class)
+                    .addAnnotatedClass(ClassRoomWithUuidGenerator.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
