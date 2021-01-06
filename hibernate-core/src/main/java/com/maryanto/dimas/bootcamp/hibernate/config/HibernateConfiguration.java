@@ -1,5 +1,6 @@
 package com.maryanto.dimas.bootcamp.hibernate.config;
 
+import com.maryanto.dimas.bootcamp.hibernate.compose.primarykey.embedded.entity.ClassRoomEmbedded;
 import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.ClassRoomWithUniquesConstraint;
 import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.EmployeeWithCheckConstraint;
 import com.maryanto.dimas.bootcamp.hibernate.generator.entity.ClassRoomWithSequenceGenerator;
@@ -28,7 +29,8 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(ClassRoomWithUniquesConstraint.class)
                     .addAnnotatedClass(EmployeeWithCheckConstraint.class)
                     .addAnnotatedClass(ClassRoomWithSequenceGenerator.class)
-                    .addAnnotatedClass(ClassRoomWithUuidGenerator.class);
+                    .addAnnotatedClass(ClassRoomWithUuidGenerator.class)
+                    .addAnnotatedClass(ClassRoomEmbedded.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
