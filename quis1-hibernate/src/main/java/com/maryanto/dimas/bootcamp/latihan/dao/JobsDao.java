@@ -20,7 +20,7 @@ public class JobsDao implements CrudRepository<Jobs, Long> {
     public Jobs save(Jobs value) throws HibernateException {
         Long returnKey = (Long) this.session.save(value);
         value.setId(returnKey);
-        return null;
+        return value;
     }
 
     @Override

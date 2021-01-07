@@ -21,7 +21,7 @@ public class EmployeesDao implements CrudRepository<Employees, String> {
     public Employees save(Employees value) throws HibernateException {
         String returnKey = (String) this.session.save(value);
         value.setId(returnKey);
-        return null;
+        return value;
     }
 
     @Override
