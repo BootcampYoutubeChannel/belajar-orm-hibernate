@@ -7,11 +7,13 @@ import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEm
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
+@Ignore
 @Slf4j
 public class TestMahasiswaEmbedded extends TestCase {
 
