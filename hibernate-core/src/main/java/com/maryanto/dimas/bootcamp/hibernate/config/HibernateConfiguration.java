@@ -6,6 +6,7 @@ import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.ClassRoomWithUniq
 import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.EmployeeWithCheckConstraint;
 import com.maryanto.dimas.bootcamp.hibernate.generator.entity.ClassRoomWithSequenceGenerator;
 import com.maryanto.dimas.bootcamp.hibernate.generator.entity.ClassRoomWithUuidGenerator;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.enumeration.entity.EmployeeEnumOrdinal;
 import com.maryanto.dimas.bootcamp.hibernate.simple.entity.master.Mahasiswa;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
@@ -32,7 +33,8 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(ClassRoomWithSequenceGenerator.class)
                     .addAnnotatedClass(ClassRoomWithUuidGenerator.class)
                     .addAnnotatedClass(ClassRoomEmbedded.class)
-                    .addAnnotatedClass(ClassRoomIdClass.class);
+                    .addAnnotatedClass(ClassRoomIdClass.class)
+                    .addAnnotatedClass(EmployeeEnumOrdinal.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
