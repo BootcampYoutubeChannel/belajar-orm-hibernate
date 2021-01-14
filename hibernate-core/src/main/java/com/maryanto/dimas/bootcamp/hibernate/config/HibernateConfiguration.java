@@ -10,6 +10,8 @@ import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEm
 import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEmbeddedOverrideAttributes;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.enumeration.entity.EmployeeEnumOrdinal;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.enumeration.entity.EmployeeEnumString;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.jointable.entity.AlamatOneToOneEntity;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.jointable.entity.MahasiswaOneToOneEntity;
 import com.maryanto.dimas.bootcamp.hibernate.simple.entity.master.Mahasiswa;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
@@ -40,7 +42,9 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(EmployeeEnumOrdinal.class)
                     .addAnnotatedClass(EmployeeEnumString.class)
                     .addAnnotatedClass(MahasiswaEmbedded.class)
-                    .addAnnotatedClass(MahasiswaEmbeddedOverrideAttributes.class);
+                    .addAnnotatedClass(MahasiswaEmbeddedOverrideAttributes.class)
+                    .addAnnotatedClass(AlamatOneToOneEntity.class)
+                    .addAnnotatedClass(MahasiswaOneToOneEntity.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
