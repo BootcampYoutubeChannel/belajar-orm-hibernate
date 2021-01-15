@@ -10,7 +10,9 @@ import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEm
 import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEmbeddedOverrideAttributes;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.enumeration.entity.EmployeeEnumOrdinal;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.enumeration.entity.EmployeeEnumString;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.jointable.entity.AlamatOneToManyEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.jointable.entity.AlamatOneToOneEntity;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.jointable.entity.MahasiswaOneToManyEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.jointable.entity.MahasiswaOneToOneEntity;
 import com.maryanto.dimas.bootcamp.hibernate.simple.entity.master.Mahasiswa;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +46,9 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(MahasiswaEmbedded.class)
                     .addAnnotatedClass(MahasiswaEmbeddedOverrideAttributes.class)
                     .addAnnotatedClass(AlamatOneToOneEntity.class)
-                    .addAnnotatedClass(MahasiswaOneToOneEntity.class);
+                    .addAnnotatedClass(MahasiswaOneToOneEntity.class)
+                    .addAnnotatedClass(MahasiswaOneToManyEntity.class)
+                    .addAnnotatedClass(AlamatOneToManyEntity.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
