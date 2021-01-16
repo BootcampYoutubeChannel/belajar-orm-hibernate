@@ -47,7 +47,9 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(MahasiswaOneToManyEntity.class)
                     .addAnnotatedClass(AlamatOneToManyEntity.class)
                     .addAnnotatedClass(MahasiswaManyToOneEntity.class)
-                    .addAnnotatedClass(KelasManyToOneEntity.class);
+                    .addAnnotatedClass(KelasManyToOneEntity.class)
+                    .addAnnotatedClass(MahasiswaManyToManyEntity.class)
+                    .addAnnotatedClass(MatakuliahManyToManyEntity.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
