@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Table(name = "kendraan", schema = "singletable")
 @GenericGenerator(name = "uuid_gen", strategy = "uuid2")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "jenis_kendaraan", discriminatorType = DiscriminatorType.STRING, length = 50)
 public class SingleTableKendaraanEntity {
 
     @Id

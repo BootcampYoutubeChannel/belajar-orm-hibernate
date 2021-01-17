@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Data
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
+@DiscriminatorValue("Mobil")
 public class SingleTableMobilEntity extends SingleTableKendaraanEntity {
 
     @Column(name = "jumlah_kursi", length = 1)

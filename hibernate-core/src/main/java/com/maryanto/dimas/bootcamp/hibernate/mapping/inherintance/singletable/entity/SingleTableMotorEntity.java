@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Data
@@ -13,7 +14,8 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-public class SingleTableMotorEntity extends SingleTableKendaraanEntity{
+@DiscriminatorValue("Motor")
+public class SingleTableMotorEntity extends SingleTableKendaraanEntity {
 
     @Column(name = "jenis_rantai")
     private String jenisRantai;
