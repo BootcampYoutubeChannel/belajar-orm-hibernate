@@ -9,10 +9,12 @@ import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Optional;
 
+@Ignore
 @Slf4j
 public class TestMappedSuperClassKendaraan extends TestCase {
 
