@@ -23,6 +23,7 @@ import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.tableperclass.
 import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.tableperclass.entity.TablePerClassMobilEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.tableperclass.entity.TablePerClassMotorEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.jointable.entity.*;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.parentchild.entity.ParentChildEmployeeEntity;
 import com.maryanto.dimas.bootcamp.hibernate.simple.entity.master.Mahasiswa;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
@@ -73,7 +74,8 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(JoinTableMobilEntity.class)
                     .addAnnotatedClass(TablePerClassKendaraanEntity.class)
                     .addAnnotatedClass(TablePerClassMobilEntity.class)
-                    .addAnnotatedClass(TablePerClassMotorEntity.class);
+                    .addAnnotatedClass(TablePerClassMotorEntity.class)
+                    .addAnnotatedClass(ParentChildEmployeeEntity.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
