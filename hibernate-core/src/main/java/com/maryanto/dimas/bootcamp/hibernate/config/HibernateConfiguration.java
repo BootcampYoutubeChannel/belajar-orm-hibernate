@@ -10,6 +10,9 @@ import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEm
 import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEmbeddedOverrideAttributes;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.enumeration.entity.EmployeeEnumOrdinal;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.enumeration.entity.EmployeeEnumString;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.jointable.entity.JoinTableKendaraanEntity;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.jointable.entity.JoinTableMobilEntity;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.jointable.entity.JoinTableMotorEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.mappedsuperclass.entity.MappedSuperclassKendaraanEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.mappedsuperclass.entity.MappedSuperclassMobilEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.inherintance.mappedsuperclass.entity.MappedSuperclassMotorEntity;
@@ -61,7 +64,10 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(MappedSuperclassMotorEntity.class)
                     .addAnnotatedClass(SingleTableKendaraanEntity.class)
                     .addAnnotatedClass(SingleTableMobilEntity.class)
-                    .addAnnotatedClass(SingleTableMotorEntity.class);
+                    .addAnnotatedClass(SingleTableMotorEntity.class)
+                    .addAnnotatedClass(JoinTableKendaraanEntity.class)
+                    .addAnnotatedClass(JoinTableMotorEntity.class)
+                    .addAnnotatedClass(JoinTableMobilEntity.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
