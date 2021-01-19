@@ -6,6 +6,7 @@ import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.ClassRoomWithUniq
 import com.maryanto.dimas.bootcamp.hibernate.constraint.entity.EmployeeWithCheckConstraint;
 import com.maryanto.dimas.bootcamp.hibernate.generator.entity.ClassRoomWithSequenceGenerator;
 import com.maryanto.dimas.bootcamp.hibernate.generator.entity.ClassRoomWithUuidGenerator;
+import com.maryanto.dimas.bootcamp.hibernate.mapping.collection.entity.CollectionAsEmbeddedMahasiswa;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.collection.entity.CollectionAsValueMahasiswaEntity;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEmbedded;
 import com.maryanto.dimas.bootcamp.hibernate.mapping.embedded.entity.MahasiswaEmbeddedOverrideAttributes;
@@ -77,7 +78,8 @@ public class HibernateConfiguration {
                     .addAnnotatedClass(TablePerClassMobilEntity.class)
                     .addAnnotatedClass(TablePerClassMotorEntity.class)
                     .addAnnotatedClass(ParentChildEmployeeEntity.class)
-                    .addAnnotatedClass(CollectionAsValueMahasiswaEntity.class);
+                    .addAnnotatedClass(CollectionAsValueMahasiswaEntity.class)
+                    .addAnnotatedClass(CollectionAsEmbeddedMahasiswa.class);
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
