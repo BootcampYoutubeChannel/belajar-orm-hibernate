@@ -1,5 +1,6 @@
 package com.maryanto.dimas.bootcamp.hibernate.config;
 
+import com.github.fluent.hibernate.cfg.scanner.EntityScanner;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -7,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import java.util.List;
 
 @Slf4j
 public class HibernateConfiguration {
@@ -18,6 +21,11 @@ public class HibernateConfiguration {
                 .build();
         try {
             MetadataSources metadataSources = new MetadataSources(registry);
+            List<Class<?>> classes = EntityScanner
+                    .scanPackages("com.maryanto.dimas.bootcamp.hibernate.entity").result();
+            for (Class<?> annotatedClass : classes) {
+                metadataSources.addAnnotatedClass(annotatedClass);
+            }
             ourSessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
         } catch (Throwable ex) {
