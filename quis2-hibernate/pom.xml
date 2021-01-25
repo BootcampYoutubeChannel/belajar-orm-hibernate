@@ -102,6 +102,20 @@
                         <scope>runtime</scope>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <user>dimas_maryanto</user>
+                    <password>dimas</password>
+                    <url>jdbc:postgresql://localhost:5432/quis2_hibernate</url>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <cleanDisabled>false</cleanDisabled>
+                    <cleanOnValidationError>true</cleanOnValidationError>
+                    <schemas>
+                        <schema>public</schema>
+                        <schema>wilayah</schema>
+                        <schema>nasabah</schema>
+                        <schema>transaksi</schema>
+                    </schemas>
+                </configuration>
             </plugin>
 
             <!-- other plugins -->
