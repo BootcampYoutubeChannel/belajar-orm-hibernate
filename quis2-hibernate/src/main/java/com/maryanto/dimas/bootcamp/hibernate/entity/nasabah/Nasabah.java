@@ -1,6 +1,7 @@
 package com.maryanto.dimas.bootcamp.hibernate.entity.nasabah;
 
 import com.maryanto.dimas.bootcamp.hibernate.entity.wilayah.Kecamatan;
+import com.maryanto.dimas.bootcamp.hibernate.entity.wilayah.Kelurahan;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
 import lombok.experimental.SuperBuilder;
@@ -31,8 +32,8 @@ public class Nasabah {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "kecamatan_id")
-    private Kecamatan kecamatan;
+    @JoinColumn(name = "kelurahan_id")
+    private Kelurahan kelurahan;
     @Column(name = "created_by")
     private String createdBy;
     @Column(name = "created_date")
