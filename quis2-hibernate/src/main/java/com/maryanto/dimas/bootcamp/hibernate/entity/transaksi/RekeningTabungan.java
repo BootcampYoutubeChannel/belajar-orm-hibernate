@@ -8,6 +8,8 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -48,4 +50,9 @@ public class RekeningTabungan {
     private String lastUpdatedBy;
     @Column(name = "last_updated_date")
     private LocalDateTime lastUpdatedDate;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @FieldNameConstants.Exclude
+    @OneToMany(mappedBy = "rekening")
+    private List<TransaksiTabungan> listTransaksi = new ArrayList<>();
 }

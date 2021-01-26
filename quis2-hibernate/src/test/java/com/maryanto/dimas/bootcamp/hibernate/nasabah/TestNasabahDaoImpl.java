@@ -1,4 +1,4 @@
-package com.maryanto.dimas.bootcamp.hibernate.wilayah;
+package com.maryanto.dimas.bootcamp.hibernate.nasabah;
 
 import com.maryanto.dimas.bootcamp.hibernate.config.HibernateConfiguration;
 import com.maryanto.dimas.bootcamp.hibernate.dao.nasabah.NasabahDao;
