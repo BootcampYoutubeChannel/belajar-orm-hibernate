@@ -42,6 +42,24 @@ public class TestSelectStatementDao extends TestCase {
         log.info("data: {}", optional.orElse(null));
     }
 
+    @Test
+    public void testFindByNim() {
+        Optional<Mahasiswa> optional = this.selectDao.findByNim("10511150");
+        assertTrue("nim 10511150 is present", optional.isPresent());
+        log.info("data: {}", optional.get());
+
+        optional = this.selectDao.findByNim("10511159");
+        assertFalse("id 3 is not present", optional.isPresent());
+        log.info("data: {}", optional.orElse(null));
+    }
+
+    @Test
+    public void testFindByNamaAtauTahunMasuk() {
+        List<Mahasiswa> list = this.selectDao.findByNamaOrTahunMasuk("Dimas Maryanto", 2011);
+        assertEquals("jumlah data: ", 2, list.size());
+        log.info("data: {}", list);
+    }
+
     @Override
     protected void tearDown() throws Exception {
         log.info("destroy hibernate session!");
