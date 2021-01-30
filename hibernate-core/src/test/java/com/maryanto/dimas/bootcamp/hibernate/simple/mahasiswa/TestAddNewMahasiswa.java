@@ -30,8 +30,8 @@ public class TestAddNewMahasiswa extends TestCase {
     public void testSaveMahasiswa() {
 //        init value
         Mahasiswa mahasiswa = Mahasiswa.builder()
-                .kode(2L)
-                .nim("10511150")
+                .kode(1L)
+                .nim("10511151")
                 .nama("Dimas Maryanto")
                 .active(true)
                 .createdBy("admin")
