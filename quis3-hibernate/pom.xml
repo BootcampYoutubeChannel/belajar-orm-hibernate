@@ -1,25 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.maryanto.dimas.bootcamp.hibernate</groupId>
         <artifactId>belajar-hibernate</artifactId>
         <version>2021.01.25</version>
     </parent>
 
-    <artifactId>hibernate-core</artifactId>
-    <version>2021.01.02</version>
-    <packaging>jar</packaging>
-
-    <name>hibernate-core</name>
+    <artifactId>quis3-hibernate</artifactId>
+    <version>2021.02.08</version>
+    <name>quis3-hibernate</name>
     <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hibernate.version>5.4.22.Final</hibernate.version>
-        <postgresql.version>42.2.12.jre7</postgresql.version>
-    </properties>
 
     <build>
         <plugins>
@@ -44,6 +37,18 @@
                         <scope>runtime</scope>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <user>dimas_maryanto</user>
+                    <password>dimas</password>
+                    <url>jdbc:postgresql://localhost:5432/quis3_hibernate</url>
+                    <baselineOnMigrate>true</baselineOnMigrate>
+                    <cleanDisabled>false</cleanDisabled>
+                    <cleanOnValidationError>true</cleanOnValidationError>
+                    <schemas>
+                        <schema>hr</schema>
+                        <schema>regions</schema>
+                    </schemas>
+                </configuration>
             </plugin>
 
             <!-- other plugins -->
