@@ -7,6 +7,7 @@ import com.maryanto.dimas.bootcamp.dto.EmployeeSalaryDto;
 import com.maryanto.dimas.bootcamp.dto.GroupByDepartmentDto;
 import com.maryanto.dimas.bootcamp.entity.hr.Employee;
 import com.maryanto.dimas.bootcamp.entity.hr.EmployeeStatus;
+import com.maryanto.dimas.bootcamp.entity.hr.Job;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
@@ -63,6 +64,12 @@ public class TestEmployeeDao extends TestCase {
     @Test
     public void testNo8() {
         List<Employee> list = this.dao.findSalarySubQueryByJobId("IT_PROG");
+        log.info("data: {}", list);
+    }
+
+    @Test
+    public void testNo9() {
+        List<Job> list = this.dao.unqiueJobFromEmployees();
         log.info("data: {}", list);
     }
 

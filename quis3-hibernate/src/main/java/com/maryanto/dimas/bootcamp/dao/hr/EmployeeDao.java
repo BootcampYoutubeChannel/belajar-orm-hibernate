@@ -5,6 +5,7 @@ import com.maryanto.dimas.bootcamp.dto.EmployeeSalaryDto;
 import com.maryanto.dimas.bootcamp.dto.GroupByDepartmentDto;
 import com.maryanto.dimas.bootcamp.entity.hr.Employee;
 import com.maryanto.dimas.bootcamp.entity.hr.EmployeeStatus;
+import com.maryanto.dimas.bootcamp.entity.hr.Job;
 import org.hibernate.Session;
 
 import java.math.BigDecimal;
@@ -121,5 +122,13 @@ public class EmployeeDao {
         return this.session.createQuery(hql, Employee.class)
                 .setParameter("jobCompare", jobId)
                 .getResultList();
+    }
+
+    public List<Job> unqiueJobFromEmployees() {
+        //language=HQL
+        String hql = "select distinct j\n" +
+                "from Employee empl left JOIN Job j on empl.job = j\n" +
+                "order by j.minSalary ";
+        return this.session.createQuery(hql, Job.class).getResultList();
     }
 }
