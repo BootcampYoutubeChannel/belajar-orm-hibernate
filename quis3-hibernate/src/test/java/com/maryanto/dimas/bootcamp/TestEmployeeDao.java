@@ -6,6 +6,7 @@ import com.maryanto.dimas.bootcamp.entity.hr.Employee;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -27,6 +28,13 @@ public class TestEmployeeDao extends TestCase {
     public void testNo3() {
         List<Employee> list = this.dao.findByFirstNameLikeOrSalaryLowerThenOrderCommission("n", new BigDecimal(5_000));
         log.info("data: {}", list);
+    }
+
+    @Test
+    public void testNo4() {
+        Transaction trx = this.session.beginTransaction();
+        this.dao.updateCommissionPct("IT_PROG");
+        trx.commit();
     }
 
     @Override

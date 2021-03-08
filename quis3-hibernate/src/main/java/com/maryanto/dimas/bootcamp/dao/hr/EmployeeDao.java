@@ -26,4 +26,18 @@ public class EmployeeDao {
                 .setParameter("salaryCompare", salary)
                 .getResultList();
     }
+
+    public void updateCommissionPct(String jobId){
+        //language=HQL
+        String hql =
+                "update Employee set\n" +
+                        "commissionPct = coalesce(commissionPct, 0)  + 0.2\n" +
+                        "where id in (select empl.id \n" +
+                        "                 from Employee empl join Job j on (empl.job = j)\n" +
+                        "                 where extract(day from current_timestamp - empl.joinDate) >= 365 and \n" +
+                        "                j.id = :jobIdCompare)";
+        this.session.createQuery(hql)
+                .setParameter("jobIdCompare", jobId)
+                .executeUpdate();
+    }
 }
