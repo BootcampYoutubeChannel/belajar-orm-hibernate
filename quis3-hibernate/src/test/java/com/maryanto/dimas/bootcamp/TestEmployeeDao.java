@@ -2,6 +2,7 @@ package com.maryanto.dimas.bootcamp;
 
 import com.maryanto.dimas.bootcamp.config.HibernateConfiguration;
 import com.maryanto.dimas.bootcamp.dao.hr.EmployeeDao;
+import com.maryanto.dimas.bootcamp.dto.EmployeeManagerDto;
 import com.maryanto.dimas.bootcamp.entity.hr.Employee;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,12 @@ public class TestEmployeeDao extends TestCase {
         Transaction trx = this.session.beginTransaction();
         this.dao.updateCommissionPct("IT_PROG");
         trx.commit();
+    }
+
+    @Test
+    public void testNo5() {
+        List<EmployeeManagerDto> list = this.dao.findEmployeeManager();
+        log.info("data: {}", list);
     }
 
     @Override

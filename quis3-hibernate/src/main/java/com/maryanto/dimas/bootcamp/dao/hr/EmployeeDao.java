@@ -1,5 +1,6 @@
 package com.maryanto.dimas.bootcamp.dao.hr;
 
+import com.maryanto.dimas.bootcamp.dto.EmployeeManagerDto;
 import com.maryanto.dimas.bootcamp.entity.hr.Employee;
 import org.hibernate.Session;
 
@@ -27,7 +28,7 @@ public class EmployeeDao {
                 .getResultList();
     }
 
-    public void updateCommissionPct(String jobId){
+    public void updateCommissionPct(String jobId) {
         //language=HQL
         String hql =
                 "update Employee set\n" +
@@ -39,5 +40,25 @@ public class EmployeeDao {
         this.session.createQuery(hql)
                 .setParameter("jobIdCompare", jobId)
                 .executeUpdate();
+    }
+
+    public List<EmployeeManagerDto> findEmployeeManager() {
+        //language=HQL
+        String hql = "select  new com.maryanto.dimas.bootcamp.dto.EmployeeManagerDto(\n" +
+                "            " +
+                "empl.id, \n" +
+                "            " +
+                "concat(empl.firstName, ' ', empl.lastName),\n" +
+                "            dep.name,\n" +
+                "            case when empl.manager is null then 'Tidak Memiliki Manager'\n" +
+                "            else concat(man.firstName, ' ', man.lastName) end, \n" +
+                "            j.title)\n" +
+                "from Employee empl left join \n" +
+                "    " +
+                "Employee man on (empl.manager = man) left join \n" +
+                "    Job j on (empl.job = j) left join \n" +
+                "    Department dep on (empl.department = dep)\n" +
+                "order by man.firstName, empl.firstName";
+        return this.session.createQuery(hql, EmployeeManagerDto.class).getResultList();
     }
 }
