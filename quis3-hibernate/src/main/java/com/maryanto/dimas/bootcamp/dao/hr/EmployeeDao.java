@@ -2,7 +2,9 @@ package com.maryanto.dimas.bootcamp.dao.hr;
 
 import com.maryanto.dimas.bootcamp.dto.EmployeeManagerDto;
 import com.maryanto.dimas.bootcamp.dto.EmployeeSalaryDto;
+import com.maryanto.dimas.bootcamp.dto.GroupByDepartmentDto;
 import com.maryanto.dimas.bootcamp.entity.hr.Employee;
+import com.maryanto.dimas.bootcamp.entity.hr.EmployeeStatus;
 import org.hibernate.Session;
 
 import java.math.BigDecimal;
@@ -88,6 +90,23 @@ public class EmployeeDao {
                 "order by man.firstName, empl.firstName";
         return this.session.createQuery(hql, EmployeeSalaryDto.class)
                 .setParameter("salaryCompare", salary)
+                .getResultList();
+    }
+
+    public List<GroupByDepartmentDto> totalSalariesByDepartments(List<EmployeeStatus> status) {
+        //language=HQL
+        String hql = "select  new com.maryanto.dimas.bootcamp.dto.GroupByDepartmentDto(\n" +
+                "            " +
+                "dep.id, \n" +
+                "            dep.name, \n" +
+                "            sum(empl.salary), \n" +
+                "            count(empl)\n" +
+                "        )\n" +
+                "from Employee empl left join Department dep on (dep = empl.department)\n" +
+                "where empl.status in (:statusComparator)\n" +
+                "group by dep.id, dep.name";
+        return this.session.createQuery(hql, GroupByDepartmentDto.class)
+                .setParameterList("statusComparator", status)
                 .getResultList();
     }
 }
