@@ -3,6 +3,7 @@ package com.maryanto.dimas.bootcamp;
 import com.maryanto.dimas.bootcamp.config.HibernateConfiguration;
 import com.maryanto.dimas.bootcamp.dao.hr.EmployeeDao;
 import com.maryanto.dimas.bootcamp.dto.EmployeeManagerDto;
+import com.maryanto.dimas.bootcamp.dto.EmployeeSalaryDto;
 import com.maryanto.dimas.bootcamp.entity.hr.Employee;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,12 @@ public class TestEmployeeDao extends TestCase {
     @Test
     public void testNo5() {
         List<EmployeeManagerDto> list = this.dao.findEmployeeManager();
+        log.info("data: {}", list);
+    }
+
+    @Test
+    public void testNo6() {
+        List<EmployeeSalaryDto> list = this.dao.findBySalaryHigher(new BigDecimal(4000));
         log.info("data: {}", list);
     }
 

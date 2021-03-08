@@ -1,6 +1,7 @@
 package com.maryanto.dimas.bootcamp.dao.hr;
 
 import com.maryanto.dimas.bootcamp.dto.EmployeeManagerDto;
+import com.maryanto.dimas.bootcamp.dto.EmployeeSalaryDto;
 import com.maryanto.dimas.bootcamp.entity.hr.Employee;
 import org.hibernate.Session;
 
@@ -60,5 +61,33 @@ public class EmployeeDao {
                 "    Department dep on (empl.department = dep)\n" +
                 "order by man.firstName, empl.firstName";
         return this.session.createQuery(hql, EmployeeManagerDto.class).getResultList();
+    }
+
+    public List<EmployeeSalaryDto> findBySalaryHigher(BigDecimal salary) {
+        //language=HQL
+        String hql = "select  new com.maryanto.dimas.bootcamp.dto.EmployeeSalaryDto(" +
+                "   \n" +
+                "            " +
+                "empl.id, \n" +
+                "            " +
+                "concat(empl.firstName, ' ', empl.lastName),\n" +
+                "            dep.name,\n" +
+                "            j.title,\n" +
+                "            to_char(empl.salary, '999G999G999D00'),\n" +
+                "            case when empl.commissionPct is null then 'Tidak memiliki komisi'\n" +
+                "            else " +
+                "to_char(coalesce(empl.commissionPct, 0) * empl.salary, '999G999G999D00') end,\n" +
+                "            to_char(empl.salary + (coalesce(empl.commissionPct, 0) * empl.salary), '999G999G999D00')\n" +
+                "        )\n" +
+                "from Employee empl left join \n" +
+                "    " +
+                "Employee man on (empl.manager = man) left join \n" +
+                "    Job j on (empl.job = j) left join \n" +
+                "    Department dep on (empl.department = dep)\n" +
+                "where empl.salary >= :salaryCompare\n" +
+                "order by man.firstName, empl.firstName";
+        return this.session.createQuery(hql, EmployeeSalaryDto.class)
+                .setParameter("salaryCompare", salary)
+                .getResultList();
     }
 }
