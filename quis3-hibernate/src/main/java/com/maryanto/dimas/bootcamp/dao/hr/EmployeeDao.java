@@ -131,4 +131,12 @@ public class EmployeeDao {
                 "order by j.minSalary ";
         return this.session.createQuery(hql, Job.class).getResultList();
     }
+
+    public List<Employee> employeeAddressEmpty() {
+        //language=HQL
+        String hql = "select empl \n" +
+                "from Employee empl \n" +
+                "where empl.addresses is empty";
+        return this.session.createQuery(hql, Employee.class).getResultList();
+    }
 }

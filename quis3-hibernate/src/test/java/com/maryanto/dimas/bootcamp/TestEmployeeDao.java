@@ -73,6 +73,12 @@ public class TestEmployeeDao extends TestCase {
         log.info("data: {}", list);
     }
 
+    @Test
+    public void testNo10() {
+        List<Employee> list = this.dao.employeeAddressEmpty();
+        log.info("data: {}", list);
+    }
+
     @Override
     protected void tearDown() throws Exception {
         log.info("hibernate session shutdown...");
