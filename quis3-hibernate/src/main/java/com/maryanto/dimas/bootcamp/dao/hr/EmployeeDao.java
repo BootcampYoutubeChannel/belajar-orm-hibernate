@@ -109,4 +109,17 @@ public class EmployeeDao {
                 .setParameterList("statusComparator", status)
                 .getResultList();
     }
+
+    public List<Employee> findSalarySubQueryByJobId(String jobId) {
+        String hql = "from Employee out\n" +
+                "where \n" +
+                "    " +
+                "out.commissionPct is not null and\n" +
+                "    out.salary < any (select inn.salary \n" +
+                "                      from Employee inn join Job j on (inn.job = j)\n" +
+                "                      where j.id = :jobCompare)";
+        return this.session.createQuery(hql, Employee.class)
+                .setParameter("jobCompare", jobId)
+                .getResultList();
+    }
 }
