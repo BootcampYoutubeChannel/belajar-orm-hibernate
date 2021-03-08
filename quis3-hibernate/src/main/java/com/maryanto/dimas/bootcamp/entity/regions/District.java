@@ -1,8 +1,7 @@
 package com.maryanto.dimas.bootcamp.entity.regions;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,8 +10,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "provinces", schema = "regions")
-public class Province {
+@Table(name = "districts", schema = "regions")
+public class District {
 
     @Id
     @Column(name = "id")
@@ -21,4 +20,10 @@ public class Province {
     private String id;
     private Long code;
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @FieldNameConstants.Exclude
+    private City province;
 }
